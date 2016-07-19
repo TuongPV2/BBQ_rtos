@@ -1991,6 +1991,12 @@
       </file>
     </group>
     <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_adc16.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_adc16.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_clock.c</name>
     </file>
     <file>
@@ -2015,6 +2021,12 @@
       <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_i2c.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_lptmr.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_lptmr.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_lpuart.c</name>
     </file>
     <file>
@@ -2022,6 +2034,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_port.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_rtc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_rtc.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\devices\MKL27Z644\drivers\fsl_smc.c</name>
@@ -2114,10 +2132,16 @@
   <group>
     <name>source</name>
     <file>
-      <name>$PROJ_DIR$\..\freertos_i2c.c</name>
+      <name>$PROJ_DIR$\..\cap1106.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\cap1106.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\FreeRTOSConfig.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\main.c</name>
     </file>
   </group>
   <group>

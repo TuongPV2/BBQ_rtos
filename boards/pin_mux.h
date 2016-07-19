@@ -30,27 +30,19 @@
 
 #ifndef _PIN_MUX_H_
 #define _PIN_MUX_H_
-
-#include <stdbool.h>
-#include "fsl_common.h"
-
+#include "board.h"
 #if defined(__cplusplus)
 extern "C" {
-#endif /* __cplusplus*/
-       /*!
-        * @brief configure all pins for this demo/example
-        *
-        */
-void pinmux_init_all(bool disablePortClockAfterInit);
+#endif /* __cplusplus */
 
 /*!
- * @brief configure pins for lpuart0
+ * @brief configure all pins for this demo/example
  *
  */
-void pinmux_init_lpuart0(bool disablePortClockAfterInit);
+void BOARD_InitPins(void);
 
 #if defined(__cplusplus)
 }
-#endif /* __cplusplus*/
+#endif /* __cplusplus */
 
-#endif /* _PIN_MUX_H_  */
+#endif /* _PIN_MUX_H_ */

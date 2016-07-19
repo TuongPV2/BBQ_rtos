@@ -132,6 +132,7 @@ void BOARD_BootClockVLPR(void)
 
     SMC_SetPowerModeProtection(SMC, kSMC_AllowPowerModeAll);
     SMC_SetPowerModeVlpr(SMC);
+
     while (SMC_GetPowerModeState(SMC) != kSMC_PowerStateVlpr)
     {
     }
@@ -144,6 +145,10 @@ void BOARD_BootClockRUN(void)
     CLOCK_SetMcgliteConfig(&g_defaultClockConfigRun.mcgliteConfig);
 
     CLOCK_SetSimConfig(&g_defaultClockConfigRun.simConfig);
+
+    // Uncomment if use RTC
+    CLOCK_InitOsc0(&g_defaultClockConfigRun.oscConfig);
+    CLOCK_SetXtal0Freq(BOARD_XTAL0_CLK_HZ);
 
     SystemCoreClock = g_defaultClockConfigRun.coreClock;
 }
