@@ -1,0 +1,6 @@
+debug/
+release/
+settings/
+bbq.sublime-workspace
+*.dep
+.DS_Store
