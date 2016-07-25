@@ -48,6 +48,7 @@
 #include "fsl_lptmr.h"
 #include "fsl_gpio.h"
 
+#include "cap1106.h"
 #include "myLed.h"
 #include "myADC.h"
 #include "myUI.h"
@@ -61,18 +62,19 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-#define TASK_DELAY        200
+
 /* Task priorities. */
-#define TesterFnc_PRIORITY (configMAX_PRIORITIES - 1)
+//#define Tester_PRIORITY (configMAX_PRIORITIES - 1)
 
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
-static void vTesterFnc(void *pvParameters);
+void vActivateLED(void *pvParameter);
+void vDeactivateLED(void *pvParameter);
 /*******************************************************************************
  * Variables
  ******************************************************************************/
-
+TimerHandle_t xTimerHdl1,xTimerHdl2;
 /*******************************************************************************
  * Code
  ******************************************************************************/
@@ -88,28 +90,23 @@ int main(void)
 #if defined(DEGBUG_PRINT) && DEGBUG_PRINT
     BOARD_InitDebugConsole();
 #endif
-    //BOARD_LPTMRInit();
-    //BOARD_RTCInit();
-
-    //ESP_Init();
-    //ADCInit();
-    //UI_Init();
-    //Menu_Init();
-
-    //DBG("KL27 start");
 
     /* Set to allow entering vlps mode */
     SMC_SetPowerModeProtection(SMC, kSMC_AllowPowerModeVlp);
-    //UpdateTimerTick(10);
-
-    //CreateTimer(5, 1 , LedProcess, NULL); // Create led handle every 5ms
-    //ADC_StartProcess();
-
-    if (xTaskCreate(vTesterFnc, "vTesterFnc", configMINIMAL_STACK_SIZE + 60, NULL, TesterFnc_PRIORITY, NULL) != pdPASS)
+	
+	xTimerHdl1 = xTimerCreate("vTest Timer", (200/portTICK_RATE_MS), pdTRUE, (void *)1, vActivateLED);
+	if( xTimerHdl1 != NULL)
+	{
+		
+		xTimerStart( xTimerHdl1, 0 );
+	}
+	
+	xTimerHdl2 = xTimerCreate("vTest Timer", (1005/portTICK_RATE_MS), pdTRUE, (void *)2, vDeactivateLED);
+    if (xTimerHdl2 != NULL)
     {
-        //PRINTF("Failed to create vTesterFnc task");
+        xTimerStart( xTimerHdl2, 0 );
     }
-
+	
     vTaskStartScheduler();
 
     while (1)
@@ -118,14 +115,12 @@ int main(void)
     }
 }
 
-static void vTesterFnc(void *pvParameters)
+void vActivateLED(void *pvParameter)
 {
-    //UNUSED_PARAMETER(pvParameter);
-    for( ;; )
-    {
-        PROBE1_LED_OUT(1);
-        vTaskDelay(TASK_DELAY);
-        PROBE1_LED_OUT(0);
-        vTaskDelay(TASK_DELAY);
-    }
+    PROBE2_LED_OUT(0);
+}
+
+void vDeactivateLED(void *pvParameter)
+{
+    PROBE2_LED_OUT(1);
 }

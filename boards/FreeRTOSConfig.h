@@ -102,6 +102,7 @@
 #define configUSE_APPLICATION_TASK_TAG 0
 #define configUSE_COUNTING_SEMAPHORES 1
 #define configUSE_TIME_SLICING 0
+#define configSYSTICK_USE_LOW_POWER_TIMER 1 /*use LPTMR as heartbeat of system */
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 0
